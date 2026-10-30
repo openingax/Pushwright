@@ -477,7 +477,13 @@ M1 就带上一个最小的 App 外壳，原因见 §5：密钥和回执监听�
   - 用 CLI 给 Sandbox 真机和模拟器各发一条，都成功；
   - 故意发错环境，能拿到 `BadDeviceToken` 和对应的解释；
   - PushCoreTests 覆盖 JWT、全部 lint 规则和错误映射。
-- 实现情况（2026-10-30）：以上都已写完并编译通过；真机、模拟器发送和单测还没跑过。和 §9.2 相比的取舍：
+- 实现情况（2026-10-30）：以上都已写完并编译通过。验收结果：
+  - PushCoreTests 11 个测试全部通过；
+  - 用推送证书给 Sandbox 真机（iPhone 14 Pro）发送成功，APNs 返回 200；
+  - 假 token 返回 `APNS_BAD_DEVICE_TOKEN`，带原因和修复建议；production 请求退出码为 4，没有发出；
+  - 模拟器发送和设置页的添加流程还没实测。
+- 实测发现：用证书第一次发送时，macOS 会弹窗询问 Pushwright 能否使用私钥，用户回答之前 TLS 握手会一直等着，最后超时。所以超时错误里加了「点始终允许」的提示。授权在重新编译后仍然有效。
+- 和 §9.2 相比的取舍：
   - 没做 `--via`：目标是模拟器就走 simctl，否则走 APNs；
   - `--print-curl` 合并进 `--dry-run`：dry run 会打印等效的 `curl`（真机）或 `xcrun simctl push`（模拟器）命令；
   - `--var`、`--no-trace`、`--expect`、`--within`、`run`、`wait`、`schema` 依赖场景和回执，留到 M2/M3；
