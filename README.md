@@ -28,7 +28,7 @@ The app runs in the menu bar (bell icon) and has no Dock icon. Choose **Install 
 
 1. Menu bar → **Settings… → Profiles → Add .p8 Key…**. Pick `AuthKey_XXXXXXXXXX.p8`; the Key ID is filled in from the file name. Enter your Team ID and, optionally, the app's bundle ID as the default topic.
    Tick only the environments the key may use. Apple lets you scope a key to sandbox only; that is the safe choice for agents.
-2. To use a certificate instead, double-click the `.p12` to import it into the login keychain, then **Add Certificate…**.
+2. To use a certificate instead, double-click the `.p12` to import it into the login keychain, then **Add Certificate…**. On the first send, macOS asks whether Pushwright may use the certificate's private key; click **Always Allow**. Until you answer, the send waits and then times out.
 3. **Targets → Add Device…** saves a device token under a short alias such as `iphone`. Booted simulators need no entry.
 4. Run `pushwright doctor` to check the setup.
 

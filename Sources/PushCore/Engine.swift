@@ -298,7 +298,18 @@ public enum Engine {
         } catch let error as ErrorInfo {
             throw error
         } catch {
-            throw ErrorInfo(code: "NETWORK_ERROR", message: error.localizedDescription, retryable: true, exitCode: ExitStatus.apns)
+            // A certificate's private key asks the user before Pushwright may sign with it; while that keychain
+            // prompt is open the TLS handshake waits, and the request times out.
+            let waitedOnKeychain = profile.kind == .certificate && (error as? URLError)?.code == .timedOut
+            throw ErrorInfo(
+                code: "NETWORK_ERROR", message: error.localizedDescription,
+                cause: waitedOnKeychain
+                    ? "macOS may be asking whether Pushwright can use the certificate's private key."
+                    : "Pushwright could not reach APNs.",
+                fix: waitedOnKeychain
+                    ? "Click Always Allow in the keychain prompt, then retry."
+                    : "Check the network and any HTTPS proxy, then retry.",
+                retryable: true, exitCode: ExitStatus.apns)
         }
 
         let record = SendRecord(
