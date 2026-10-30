@@ -1,0 +1,8 @@
+.DS_Store
+.build/
+.swiftpm/
+DerivedData/
+xcuserdata/
+dist/
+*.p8
+*.p12
