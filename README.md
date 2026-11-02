@@ -2,9 +2,9 @@
 
 A macOS APNs push tester built for AI coding agents as much as for people.
 
-Pushwright is a successor to [Knuff](https://github.com/knuffapp/knuff). A menu-bar app keeps your signing keys in the Keychain. A `pushwright` command-line tool lets you, a script or an agent such as Claude Code or Codex lint a payload, send it to a device or a booted simulator, and get back structured JSON: the APNs response, a stable error code, the likely cause and the fix.
+Pushwright is an alternative to [Knuff](https://github.com/knuffapp/knuff), which is no longer maintained. A menu-bar app keeps your signing keys in the Keychain. A `pushwright` command-line tool lets you, a script or an agent such as Claude Code or Codex lint a payload, send it to a device or a booted simulator, and get back structured JSON: the APNs response, a stable error code, the likely cause and the fix.
 
-> **Status: M1 (0.1.0).** Sandbox and simulator sends work. Production sends from the CLI are refused until the approval flow lands in M2. The design and roadmap are in [docs/DESIGN.md](docs/DESIGN.md) (Chinese).
+> **Status: M1 (0.1.0).** Sandbox sends to devices work. Simulator sends and the Settings add flows are implemented but not yet tested. Production sends from the CLI are refused until the approval flow lands in M2. The design and roadmap are in [docs/DESIGN.md](docs/DESIGN.md) (Chinese).
 
 ## Requirements
 
@@ -134,4 +134,4 @@ MIT. See [LICENSE](LICENSE).
 
 Pushwright 是 Knuff 的替代品：一个 macOS 菜单栏 App 加一个 `pushwright` 命令行工具，面向 AI agent 设计。所有命令都支持 `--json`，失败时给出稳定的错误码、原因和修复建议，方便 agent 自己排查。
 
-当前是 M1：支持 sandbox 和模拟器推送；生产环境推送要等 M2 的审批流程，在此之前会被拒绝。设计文档见 [docs/DESIGN.md](docs/DESIGN.md)。
+当前是 M1：sandbox 真机推送可用，模拟器推送和设置页的添加流程已实现但还没实测；生产环境推送要等 M2 的审批流程，在此之前会被拒绝。设计文档见 [docs/DESIGN.md](docs/DESIGN.md)。
