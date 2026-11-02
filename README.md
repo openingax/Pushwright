@@ -17,10 +17,13 @@ Pushwright is a successor to [Knuff](https://github.com/knuffapp/knuff). A menu-
 There are no release builds yet, so build from source:
 
 ```bash
-git clone https://github.com/<you>/Pushwright.git
+git clone https://github.com/openingax/Pushwright.git
 cd Pushwright
-open App/Pushwright.xcodeproj   # set your own team under Signing & Capabilities, then Run
+cp App/Local.xcconfig.example App/Local.xcconfig   # then put your Team ID in it
+open App/Pushwright.xcodeproj                      # Run
 ```
+
+`App/Local.xcconfig` is ignored by git. Set your team there instead of under Signing & Capabilities, so it stays out of `project.pbxproj`.
 
 The app runs in the menu bar (bell icon) and has no Dock icon. Choose **Install Command Line Tool** from its menu. This links `~/.local/bin/pushwright` to the CLI inside the app bundle, so add `~/.local/bin` to your `PATH` if it isn't there already.
 

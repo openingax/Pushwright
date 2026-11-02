@@ -1,0 +1,9 @@
+// Signing settings shared by every target.
+//
+// Put your own Apple Developer team in App/Local.xcconfig, which git ignores:
+//   cp App/Local.xcconfig.example App/Local.xcconfig
+// Set the team there rather than under Signing & Capabilities, so it stays out of project.pbxproj.
+
+DEVELOPMENT_TEAM =
+
+#include? "Local.xcconfig"

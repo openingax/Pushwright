@@ -37,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A10000000000000000000048 /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
 		A10000000000000000000004 /* Pushwright.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pushwright.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10000000000000000000005 /* pushwright */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = pushwright; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -77,6 +78,7 @@
 		A10000000000000000000002 = {
 			isa = PBXGroup;
 			children = (
+				A10000000000000000000048 /* Signing.xcconfig */,
 				A10000000000000000000006 /* Pushwright */,
 				A10000000000000000000007 /* CLI */,
 				A10000000000000000000003 /* Products */,
@@ -221,6 +223,7 @@
 /* Begin XCBuildConfiguration section */
 		A10000000000000000000031 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A10000000000000000000048 /* Signing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = arm64;
@@ -251,6 +254,7 @@
 		};
 		A10000000000000000000032 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A10000000000000000000048 /* Signing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = arm64;

@@ -6,3 +6,9 @@ xcuserdata/
 dist/
 *.p8
 *.p12
+App/Local.xcconfig
+*.mobileprovision
+*.provisionprofile
+*.cer
+ExportOptions.plist
+.env
