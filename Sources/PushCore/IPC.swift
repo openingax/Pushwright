@@ -84,13 +84,14 @@ public enum IPCClient {
     static func launchAndConnect(_ path: String) -> Int32? {
         let open = Process()
         open.executableURL = URL(fileURLWithPath: "/usr/bin/open")
-        // When this CLI runs from inside the app bundle, open that copy of the app; otherwise ask Launch Services.
+        // When this CLI runs from inside the app bundle, open that copy of the app; otherwise ask Launch Services
+        // for Pushwright.app by name, so a build with a different bundle ID still works.
         let executable = (Bundle.main.executableURL ?? URL(fileURLWithPath: CommandLine.arguments[0]))
             .resolvingSymlinksInPath().path(percentEncoded: false)
         if let range = executable.range(of: ".app/Contents/Helpers/") {
             open.arguments = ["-g", String(executable[..<range.lowerBound]) + ".app"]
         } else {
-            open.arguments = ["-g", "-b", PushCore.appBundleId]
+            open.arguments = ["-g", "-a", "Pushwright"]
         }
         guard (try? open.run()) != nil else { return nil }
         open.waitUntilExit()

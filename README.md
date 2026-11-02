@@ -19,11 +19,11 @@ There are no release builds yet, so build from source:
 ```bash
 git clone https://github.com/openingax/Pushwright.git
 cd Pushwright
-cp App/Local.xcconfig.example App/Local.xcconfig   # then put your Team ID in it
+cp App/Local.xcconfig.example App/Local.xcconfig   # then set your Team ID and bundle ID in it
 open App/Pushwright.xcodeproj                      # Run
 ```
 
-`App/Local.xcconfig` is ignored by git. Set your team there instead of under Signing & Capabilities, so it stays out of `project.pbxproj`.
+`App/Local.xcconfig` is ignored by git. Set your team there instead of under Signing & Capabilities, so it stays out of `project.pbxproj`. A bundle ID belongs to one team, so pick your own `PUSHWRIGHT_BUNDLE_ID` too; the CLI gets the same ID plus `.cli`.
 
 The app runs in the menu bar (bell icon) and has no Dock icon. Choose **Install Command Line Tool** from its menu. This links `~/.local/bin/pushwright` to the CLI inside the app bundle, so add `~/.local/bin` to your `PATH` if it isn't there already.
 

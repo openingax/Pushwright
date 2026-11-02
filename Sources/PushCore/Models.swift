@@ -3,7 +3,6 @@ import Foundation
 
 public enum PushCore {
     public static let version = "0.1.0"
-    public static let appBundleId = "com.openingax.pushwright"
 }
 
 public enum PushEnvironment: String, Codable, Sendable, CaseIterable {

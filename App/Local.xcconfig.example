@@ -1,2 +1,5 @@
 // Copy to App/Local.xcconfig and fill in your Team ID (Xcode → Settings → Accounts, or developer.apple.com → Membership).
 DEVELOPMENT_TEAM = ABCDE12345
+
+// Unless you are on the team that owns com.openingax.pushwright, pick a bundle ID of your own.
+PUSHWRIGHT_BUNDLE_ID = com.example.pushwright

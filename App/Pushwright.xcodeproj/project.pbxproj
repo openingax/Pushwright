@@ -291,7 +291,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.openingax.pushwright;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PUSHWRIGHT_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -313,7 +313,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.openingax.pushwright;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PUSHWRIGHT_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -323,7 +323,7 @@
 		A10000000000000000000024 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				PRODUCT_BUNDLE_IDENTIFIER = com.openingax.pushwright.cli;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PUSHWRIGHT_BUNDLE_ID).cli";
 				PRODUCT_NAME = pushwright;
 				SKIP_INSTALL = YES;
 			};
@@ -332,7 +332,7 @@
 		A10000000000000000000025 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				PRODUCT_BUNDLE_IDENTIFIER = com.openingax.pushwright.cli;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PUSHWRIGHT_BUNDLE_ID).cli";
 				PRODUCT_NAME = pushwright;
 				SKIP_INSTALL = YES;
 			};

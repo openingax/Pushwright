@@ -6,4 +6,8 @@
 
 DEVELOPMENT_TEAM =
 
+// The app uses this bundle ID and the embedded CLI uses it plus ".cli". A bundle ID belongs to one team,
+// so builds signed with another team override it in Local.xcconfig.
+PUSHWRIGHT_BUNDLE_ID = com.openingax.pushwright
+
 #include? "Local.xcconfig"
