@@ -497,6 +497,8 @@ M1 就带上一个最小的 App 外壳，原因见 §5：密钥和回执监听�
 - 场景文件和 `run` 命令。这时还没有回执，`expect` 只能判断到 APNs 这一层。
 - production 审批弹窗（含"10 分钟内都允许"）、频率上限、"暂停 Agent 访问"。
 - 第一个公开版本：公证后的 DMG 发到 GitHub Release，自建 Homebrew tap。
+  - `scripts/package-dmg.sh` 已提前写好（2026-10-30）：打 Release 归档，生成 `dist/Pushwright-<版本>.dmg` 并输出 SHA-256。钥匙串里有 Developer ID Application 证书时按 developer-id 导出并签名 DMG；没有时 DMG 里是开发签名的 App，只能在本机打开。设置了 `NOTARY_PROFILE` 时提交公证并装订。
+  - 已实测无证书的路径：DMG 里有 App 和 `Applications` 快捷方式，签名校验通过，开了 Hardened Runtime，内嵌 CLI 能运行。Developer ID 导出、DMG 签名和公证还没实测（缺证书）。
 - 验收：
   - Claude Code 能通过 MCP 发出推送；
   - production 请求会弹出审批，拒绝后 CLI 退出码为 4；选了"10 分钟内都允许"后，同一 Target 不再弹窗，换 Target 会再弹。

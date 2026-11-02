@@ -105,6 +105,16 @@ xcodebuild -project App/Pushwright.xcodeproj -scheme Pushwright -destination 'ge
 | `App/Pushwright` | Menu-bar app and settings |
 | `App/CLI` | CLI entry point, embedded in the app at `Contents/Helpers/pushwright` |
 | `Tests/PushCoreTests` | Unit tests |
+| `scripts/package-dmg.sh` | Release DMG, see below |
+
+### Packaging
+
+```bash
+scripts/package-dmg.sh                            # writes dist/Pushwright-<version>.dmg and prints its SHA-256
+NOTARY_PROFILE=pushwright scripts/package-dmg.sh  # also notarizes and staples it
+```
+
+With a Developer ID Application certificate in the keychain, the app is exported and the DMG signed for distribution. Without one, the DMG holds the development-signed app and opens only on your own Mac. Before notarizing, save credentials once with `xcrun notarytool store-credentials pushwright --apple-id <you@example.com> --team-id <TEAMID>`.
 
 ## Roadmap
 
