@@ -24,7 +24,7 @@ public enum Store {
         defer { historyLock.unlock() }
         let fm = FileManager.default
         try fm.createDirectory(at: directory, withIntermediateDirectories: true)
-        // ponytail: keeps one rotated file and drops anything older; add more generations if anyone needs them.
+        // Keeps one rotated file and drops anything older; add more generations if anyone needs them.
         if let size = try? historyURL.resourceValues(forKeys: [.fileSizeKey]).fileSize, size > historyLimit {
             let old = directory.appending(path: "history.1.jsonl")
             try? fm.removeItem(at: old)
@@ -49,7 +49,7 @@ public enum Store {
         allHistory().last { $0.ok && $0.via == .apns && $0.tokenHash == tokenHash }
     }
 
-    // ponytail: reads the whole file (≤20 MB) on each lookup; index it if history gets slow.
+    // Reads the whole file (≤20 MB) on each lookup; index it if history gets slow.
     static func allHistory() -> [SendRecord] {
         guard let text = try? String(contentsOf: historyURL, encoding: .utf8) else { return [] }
         return text.split(separator: "\n").compactMap { try? JSON.decode(SendRecord.self, from: Data($0.utf8)) }
